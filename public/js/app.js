@@ -19774,7 +19774,7 @@ __webpack_require__.r(__webpack_exports__);
     return {
       form: {
         search: this.filters.search,
-        match: this.filters.match
+        match: 'exact'
       },
       match: {
         exact: 'مماثل',

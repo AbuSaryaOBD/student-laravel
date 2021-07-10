@@ -46,7 +46,7 @@
             return {
                 form: {
                     search: this.filters.search,
-                    match: this.filters.match,
+                    match: 'exact',
                 },
                 match: {
                     exact: 'مماثل',
