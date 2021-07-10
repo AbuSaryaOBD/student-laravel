@@ -21,6 +21,11 @@
                                     Dashboard
                                 </jet-nav-link>
                             </div>
+                            <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                                <jet-nav-link :href="route('students')" :active="route().current('students')">
+                                    Students
+                                </jet-nav-link>
+                            </div>
                         </div>
 
                         <div class="hidden sm:flex sm:items-center sm:ml-6">
@@ -142,6 +147,11 @@
                     <div class="pt-2 pb-3 space-y-1">
                         <jet-responsive-nav-link :href="route('dashboard')" :active="route().current('dashboard')">
                             Dashboard
+                        </jet-responsive-nav-link>
+                    </div>
+                    <div class="pt-2 pb-3 space-y-1">
+                        <jet-responsive-nav-link :href="route('students')" :active="route().current('students')">
+                            Students
                         </jet-responsive-nav-link>
                     </div>
 
