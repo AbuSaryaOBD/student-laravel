@@ -7,12 +7,18 @@ trait UserScopes
     public function scopeFilter($query, array $filters)
     {
         $query->when($filters['search'] ?? null, function ($query, $search) {
-            $rawChars = mb_str_split($search);
-
-            $len = count($rawChars);
-            if ($len > 1) {
-                $lastChar = end($rawChars);
-                $rawChars[$len - 1] = preg_replace('/^(ا|ة|ه)$/u', '(ى|ه|ة|ا)', $lastChar);
+            $words = preg_split('/\s+/u', $search);
+            $search = implode('%', $words);
+            $rawChars = [];
+            foreach ($words as $word) {
+                $mbChars = mb_str_split($word);
+                $len = count($mbChars);
+                if ($len > 1) {
+                    $lastChar = end($mbChars);
+                    $mbChars[$len - 1] = preg_replace('/^(ا|ة|ه)$/u', '(ى|ه|ة|ا)', $lastChar);
+                }
+                array_push($rawChars, ...$mbChars);
+                array_push($rawChars, '(.+)?');
             }
 
             $regChars = preg_replace('/^(ا|أ|إ|آ)$/u', '(ا|أ|إ|آ|ى|ئ)', $rawChars);
