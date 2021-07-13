@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\Traits\UserScopes;
+use App\Traits\HasFilter;
 use Laravel\Sanctum\HasApiTokens;
 use Laravel\Jetstream\HasProfilePhoto;
 use Spatie\Permission\Traits\HasRoles;
@@ -20,7 +20,7 @@ class User extends Authenticatable
     use Notifiable;
     use TwoFactorAuthenticatable;
     use HasRoles;
-    use UserScopes;
+    use HasFilter;
 
     /**
      * The attributes that are mass assignable.
